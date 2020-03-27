@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <section>
+        <div class="container">
+
+            <h1>NEWS IN TITLES</h1>
+            <h3>
+                <ul>
+                    
+                    {% for article in articles %}
+            
+                   <li>
+                       <a href="{% url 'article' article.id %}">{{article.title}}</a>
+                       
+                   </li> <br>
+            
+                   {% endfor %}
+            
+                </ul>
+            </h3>
+        </div>
+
+    </section>
+    
+
+
+
+
+
+{% endblock %}

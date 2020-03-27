@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="container">
+        <section>
+        
+
+
+                <article>
+                    
+                    <h1>{{article.title}}</h1>
+                    
+                    <p>{{article.content}}</p>
+                    
+                    <p class="infos"><span class="superusers"><strong>{{article.author}}</strong> </span><span class="date">{{article.date.date}}</span></p>
+                
+                </article>
+            
+
+        </section>
+        <section >
+            <div >
+                
+                
+                {% for like in likes %}
+                <div class="likes">
+
+                    <a class="btn btn-danger" href={% url 'likes' %}?l_id={{ like.id | urlencode }}>like</a>
+            
+                    <p ><span  class="counter">{{like.counter}} </span> people like this article!</p>
+                </div>
+                {% endfor %}
+                
+            </div>
+            <hr>
+            <ul>
+            
+                {% for comment in comments %}
+                <li><p ><span class="comments">{{comment.comment}}</span><span class="users">{{comment.name}}</span></p></li>
+                {% endfor %}
+            </ul>
+
+            <form action={% url 'comments' %}?aid={{article.id}} method="post">
+
+                {% csrf_token %}
+                <textarea name="comments"  cols="80" rows="4" placeholder="Add comment..."></textarea><br>
+                <input class=" btn btn-info" type="submit" value="Submit">
+            </form> 
+                
+
+        </section >
+    </div>
+</div>
+
+{% endblock %}

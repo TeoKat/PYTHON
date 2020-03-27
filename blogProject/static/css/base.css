@@ -1,0 +1,61 @@
+
+
+.logo {
+
+    transform :scale(2, 3) translate(-50%);
+    margin-left: 50%;
+    margin-top: 100px;
+    
+}
+
+.user {
+    padding: 10px;
+    color : red;
+    font-weight: bold;
+}
+
+.article {
+    max-height: 250px;
+    overflow: hidden;
+}
+
+.articles {
+    display: flex;
+    
+}
+
+.comments {
+    color: green;
+}
+
+.counter {
+    color:red
+}
+
+.users {
+    font-weight: 500;
+    margin-left: 10px;
+    color: red;
+}
+
+.superusers {
+    font-weight: 600;
+    color: blue;
+}
+
+.date {
+    font-size: 0.8em;
+    
+}
+
+.infos {
+    text-align: right;
+}
+
+.likes p{
+    display: inline-block;
+    margin: 30px;
+}
+
+
+
