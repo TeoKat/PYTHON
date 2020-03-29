@@ -26,8 +26,10 @@ def articles(request):
 def article(request, id):
 
     article = get_object_or_404(Article, pk=id)
-    comments = get_list_or_404(Comments, article_id = id )
-    likes = get_list_or_404(Likes, article_id = id )
+    # comments = get_list_or_404(Comments, article_id = id )
+    comments = Comments.objects.filter(article_id=id)
+    likes = Likes.objects.filter(article_id=id)
+    # likes = get_list_or_404(Likes, article_id = id )
     
     return render(request, 'article.html', {'article': article,'comments': comments, 'likes': likes, })
 
@@ -49,13 +51,22 @@ def comments(request):
 
 @login_required(login_url='login')
 def likes(request):
-    
+   
     l_id = request.GET.get('l_id')
-    xlike = Likes.objects.get(id=l_id)
-    xlike.counter+=1
-    xlike.save()
+    if Likes.objects.get(article_id=l_id):
+
+        xlike = Likes.objects.get(article_id=l_id)
         
-    return redirect('article/' + l_id)
+        xlike.counter+=1
+        xlike.save()
+    else:
+        newlike = Likes(article_id = l_id) 
+        newlike.counter+=1
+        newlike.save()   
+
+
+        
+    return redirect('article/'+ l_id)
    
 
 
