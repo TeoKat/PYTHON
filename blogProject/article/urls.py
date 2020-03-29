@@ -7,5 +7,5 @@ urlpatterns = [
     path('titles', views.titles, name="titles"),
     path('comments', views.comments, name="comments"),
     path('likes', views.likes, name="likes"),
-    path('home', views.home, name="home"),
+    path('', views.home, name="home"),
 ]
