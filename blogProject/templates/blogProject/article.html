@@ -23,10 +23,10 @@
             <div >
                 
                 
-                {% for like in likes %}
                 <div class="likes">
-
-                    <a class="btn btn-danger" href={% url 'likes' %}?l_id={{ like.id | urlencode }}>like</a>
+                    
+                    <a class="btn btn-danger" href={% url 'likes' %}?l_id={{ article.id | urlencode }}>like</a>
+                    {% for like in likes %}
             
                     <p ><span  class="counter">{{like.counter}} </span> people like this article!</p>
                 </div>

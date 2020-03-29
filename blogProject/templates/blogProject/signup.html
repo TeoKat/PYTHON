@@ -2,30 +2,44 @@
 
 {% block content %}
 
-<h1>REGISTER</h1>
 
 
+<div class="container">
+  <div class="row ">
+    <div class="col-6 mx-auto">
              
-<form action={% url "signup" %} method="post">
+        <form action={% url "signup" %} method="post">  
 
- {% csrf_token %}
- 
+        {% csrf_token %}
 
-  {{form.username.label}}
-  {{form.username}}<br>
+              
+      <div class="form-group" style="margin-top: 80px;">  
+        {{form.username.label}}
+        {{form.username}}<br>
+      </div>
+      <div class="form-group ">  
+        
+        {{form.email.label}}
+        {{form.email}}<br>
+      </div>
+      <div class="form-group ">  
+        
+                {{form.password1.label}}
+                {{form.password1}}<br>
+        
+      </div>
+      <div class="form-group ">  
+        
+                {{form.password2.label}}
+                {{form.password2}}<br>
+        
+      </div>    
 
-  {{form.email.label}}
-  {{form.email}}<br>
+      <button type="submit" class="btn btn-primary">Submit</button>
 
-  {{form.password1.label}}
-  {{form.password1}}<br>
-
-  {{form.password2.label}}
-  {{form.password2}}<br>
-
-  <input type="submit" value="Sign Up">
-
-</form>
-
+      </form>
+    </div>
+  </div>  
+</div>
 
 {% endblock %}
