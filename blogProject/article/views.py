@@ -53,16 +53,16 @@ def comments(request):
 def likes(request):
    
     l_id = request.GET.get('l_id')
-    if Likes.objects.get(article_id=l_id):
+    if Likes.objects.filter(article_id=l_id).first():
 
-        xlike = Likes.objects.get(article_id=l_id)
+        like = Likes.objects.filter(article_id=l_id).first()
         
-        xlike.counter+=1
-        xlike.save()
+        like.counter+=1
+        like.save()
     else:
         newlike = Likes(article_id = l_id) 
         newlike.counter+=1
-        newlike.save()   
+        newlike.save()  
 
 
         
